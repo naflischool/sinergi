@@ -1,11 +1,11 @@
 {
-    "name": "buku_v1",
-    "short_name": "buku_v1",
+    "name": "Sinergi",
+    "short_name": "Sinergi",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#hexcode",
     "theme_color": "#hexcode",
-    "description": "A new Flutter project.",
+    "description": "Bersinergi bersama untuk perkembangan anak.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
