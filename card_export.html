@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartu Pembelajaran</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    body {
+      background: #f2f6fa;
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .card-container {
+      max-width: 370px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      padding: 18px;
+    }
+    .main-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      position: relative;
+      display: block;
+    }
+    .profile-avatar {
+      position: absolute;
+      left: 34px;
+      bottom: -32px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .card-content {
+      margin-top: 40px;
+    }
+    .card-content h2 {
+      margin: 0 0 4px 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #222;
+    }
+    .card-content .kelas {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 12px;
+    }
+    .label {
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 10px;
+      color: #333;
+    }
+    .value {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .value.green { color: #2e7d32; }
+    .value.red { color: #c62828; }
+    .value.orange { color: #f9a825; }
+    .value.gray { color: #888; }
+    .download-btn {
+      display: block;
+      width: 100%;
+      margin: 24px 0 0 0;
+      padding: 12px;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .download-btn:hover {
+      background: #125ea2;
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container" id="card">
+    <div style="position:relative;">
+      <img id="mainImage" class="main-image" src="https://nafli.or.id/assets/images/gallery02/f8c5e3de_original.jpg" alt="Main Image">
+      <div class="profile-avatar" style="position:absolute; left:34px; bottom:-32px;">
+        <img id="profileImage" src="https://i.ibb.co.com/ZXNHzVd/sabtu0100-Small.jpg" alt="Profile">
+      </div>
+    </div>
+    <div class="card-content">
+      <h2 id="nama">Nama Siswa</h2>
+      <div class="kelas" id="kelas">Kelas: -</div>
+      <div class="label">Waktu Kehadiran:</div>
+      <div class="value" id="datang">Datang : -</div>
+      <div class="value gray" id="pulang">Pulang : -</div>
+      <div class="label">Pembelajaran Hari Ini:</div>
+      <div class="value" id="pembelajaran">-</div>
+      <div class="label">Pengamatan Harian:</div>
+      <div class="value" id="pengamatan">-</div>
+    </div>
+    <button class="download-btn" onclick="downloadCard()">Download Gambar</button>
+  </div>
+  <script>
+    // Example: You can set these values via query params, localStorage, or postMessage from Flutter
+    function setCardData(data) {
+      document.getElementById('mainImage').src = data.imageUrl || document.getElementById('mainImage').src;
+      document.getElementById('profileImage').src = data.profileImageUrl || document.getElementById('profileImage').src;
+      document.getElementById('nama').textContent = data.nama || 'Nama Siswa';
+      document.getElementById('kelas').textContent = 'Kelas: ' + (data.kelasStr || '-');
+      document.getElementById('datang').textContent = 'Datang : ' + (data.datang || '-');
+      document.getElementById('pulang').textContent = 'Pulang : ' + (data.pulang || '-');
+      document.getElementById('pembelajaran').textContent = data.pembelajaranHariIni || '-';
+      document.getElementById('pengamatan').textContent = data.pengamatanHarian || '-';
+      // Color for datang
+      var datangElem = document.getElementById('datang');
+      datangElem.classList.remove('green', 'red', 'orange', 'gray');
+      if (data.datangColor === 'green') datangElem.classList.add('green');
+      else if (data.datangColor === 'red') datangElem.classList.add('red');
+      else if (data.datangColor === 'orange') datangElem.classList.add('orange');
+      else datangElem.classList.add('gray');
+    }
+    // Example: setCardData({ nama: 'Budi', kelasStr: '5A', ... })
+    // You can use window.postMessage or URL params to pass data from Flutter
+
+    function downloadCard() {
+      var card = document.getElementById('card');
+      html2canvas(card, {backgroundColor: null, useCORS: true}).then(function(canvas) {
+        var link = document.createElement('a');
+        link.download = 'sinergi_card_' + Date.now() + '.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    // Optionally: auto-fill from URL params
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    // If you want to support URL param passing, uncomment below:
+    /*
+    setCardData({
+      nama: getParam('nama'),
+      kelasStr: getParam('kelas'),
+      imageUrl: getParam('imageUrl'),
+      profileImageUrl: getParam('profileImageUrl'),
+      datang: getParam('datang'),
+      pulang: getParam('pulang'),
+      pembelajaranHariIni: getParam('pembelajaran'),
+      pengamatanHarian: getParam('pengamatan'),
+      datangColor: getParam('datangColor') // 'green', 'red', 'orange', 'gray'
+    });
+    */
+  </script>
+</body>
+</html>
