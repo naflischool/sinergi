@@ -114,10 +114,17 @@
       <div class="label">Pengamatan Harian:</div>
       <div class="value" id="pengamatan">-</div>
     </div>
-    <button class="download-btn" onclick="downloadCard()">Download Gambar</button>
+    <button class="download-btn hide-for-capture" id="downloadBtn" onclick="downloadCard()">Download Gambar</button>
   </div>
   <script>
-    // Example: You can set these values via query params, localStorage, or postMessage from Flutter
+    // Hide download button before capture
+    function hideDownloadBtn() {
+      document.getElementById('downloadBtn').style.display = 'none';
+    }
+    function showDownloadBtn() {
+      document.getElementById('downloadBtn').style.display = 'block';
+    }
+    // Set card data from Flutter
     function setCardData(data) {
       document.getElementById('mainImage').src = data.imageUrl || document.getElementById('mainImage').src;
       document.getElementById('profileImage').src = data.profileImageUrl || document.getElementById('profileImage').src;
@@ -135,19 +142,24 @@
       else if (data.datangColor === 'orange') datangElem.classList.add('orange');
       else datangElem.classList.add('gray');
     }
-    // Example: setCardData({ nama: 'Budi', kelasStr: '5A', ... })
-    // You can use window.postMessage or URL params to pass data from Flutter
-
+    // Listen for postMessage from Flutter
+    window.addEventListener('message', function(event) {
+      if (event.origin !== window.location.origin) return;
+      if (event.data && typeof event.data === 'object') {
+        setCardData(event.data);
+      }
+    });
+    // Download card as image
     function downloadCard() {
-      var card = document.getElementById('card');
-      html2canvas(card, {backgroundColor: null, useCORS: true}).then(function(canvas) {
+      hideDownloadBtn();
+      html2canvas(document.getElementById('card'), {backgroundColor: null, useCORS: true}).then(function(canvas) {
         var link = document.createElement('a');
         link.download = 'sinergi_card_' + Date.now() + '.png';
         link.href = canvas.toDataURL();
         link.click();
+        showDownloadBtn();
       });
     }
-
     // Optionally: auto-fill from URL params
     function getParam(name) {
       const url = new URL(window.location.href);
@@ -167,6 +179,14 @@
       datangColor: getParam('datangColor') // 'green', 'red', 'orange', 'gray'
     });
     */
+    // Try to get data from opener if available (for iOS Safari)
+    window.onload = function() {
+      if (window.opener && window.opener !== window) {
+        try {
+          window.opener.postMessage('requestCardData', window.location.origin);
+        } catch (e) {}
+      }
+    };
   </script>
 </body>
 </html>
