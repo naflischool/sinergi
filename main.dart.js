@@ -43592,77 +43592,81 @@ p=A.a([new A.b0(0,B.A,B.aW,new A.o(0,4),8)],t.V)
 r=t.p
 return A.bP(q,A.em(A.a([A.mC(B.bD,A.a([A.ani(A.hn(14),A.ao9(c,new A.afp(),B.dL,200,new A.afq(this),1/0),B.cT),A.oG(8,A.ane(B.k,q,new A.FF(A.ao9(h,new A.afr(),B.dL,64,new A.afs(this),64),q),q,q,32),q,q,16,q,q,q)],r),B.T,B.bL,q),A.cl(q,16,q),A.aV(e,q,q,q,A.bH(q,q,q,q,q,q,q,q,q,q,q,22,q,q,B.a6,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.aV("Kelas: "+d,q,q,q,A.bH(q,q,q,q,q,q,q,q,q,q,q,16,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.cl(q,16,q),A.aV("Waktu Kehadiran:",q,q,q,A.bH(q,q,q,q,q,q,q,q,q,q,q,13,q,q,B.a6,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.aV("Datang : "+a,q,q,q,A.bH(q,q,b,q,q,q,q,q,q,q,q,12,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.aV("Pulang : "+i,q,q,q,A.bH(q,q,B.bj,q,q,q,q,q,q,q,q,12,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.cl(q,8,q),A.aV("Pembelajaran Hari Ini:",q,q,q,A.bH(q,q,q,q,q,q,q,q,q,q,q,13,q,q,B.a6,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.aV(s,q,q,q,A.bH(q,q,B.ZS,q,q,q,q,q,q,q,q,12,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.aV(f,q,q,q,A.bH(q,q,B.bj,q,q,q,q,q,q,q,q,12,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.cl(q,8,q),A.aV("Pengamatan Harian:",q,q,q,A.bH(q,q,q,q,q,q,q,q,q,q,q,13,q,q,B.a6,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.aV(g,q,q,q,A.bH(q,q,B.bj,q,q,q,q,q,q,q,q,12,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.cl(q,18,q),A.kJ(A.a([A.aV("Sinergi by Nafli School",q,q,q,A.bH(q,q,new A.m(4287137928),q,q,q,q,q,q,q,q,13,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),A.cl(q,q,6),A.ao8("assets/logo.PNG",B.Gn,22)],r),B.dk,B.a0)],r),B.ci,B.am,B.a0),B.m,q,q,new A.bZ(B.k,q,q,o,p,q,B.ab),q,q,q,new A.av(18,18,18,18),q,q,340)},
 nh(){return this.a_3()},
-a_3(){var s=0,r=A.J(t.H),q=1,p,o=this,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3
-var $async$nh=A.K(function(b5,b6){if(b5===1){p=b6
-s=q}while(true)switch(s){case 0:b0={}
-b1=""
-b2=o.z
-s=b2!=null?2:4
+a_3(){var s=0,r=A.J(t.H),q=1,p,o=this,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5,b6,b7
+var $async$nh=A.K(function(b9,c0){if(b9===1){p=c0
+s=q}while(true)switch(s){case 0:b4={}
+b5=""
+b6=o.z
+s=b6!=null?2:4
 break
 case 2:q=6
 s=9
-return A.F(t.D3.b(b2)?b2:A.f_(b2,t.u),$async$nh)
-case 9:n=b6
+return A.F(t.D3.b(b6)?b6:A.f_(b6,t.u),$async$nh)
+case 9:n=c0
 g=n
-b1=g==null?u.m:g
+b5=g==null?u.m:g
 q=1
 s=8
 break
 case 6:q=5
-b3=p
-b1=u.m
+b7=p
+b5=u.m
 s=8
 break
 case 5:s=1
 break
 case 8:s=3
 break
-case 4:b1=u.m
-case 3:b2=o.r
-b2===$&&A.b()
+case 4:b5=u.m
+case 3:b6=o.r
+b6===$&&A.b()
 s=10
-return A.F(o.md(b2),$async$nh)
-case 10:e=b6
+return A.F(o.md(b6),$async$nh)
+case 10:e=c0
 m="-"
 l="gray"
-if(e!=null){b2=J.a2(e)
-d=b2.i(e,"scan_in")
-c=b2.i(e,"scan_out")
-if(d!=null&&J.ec(d)){b2=J.a2(d)
-b=J.uR(b2.gp(d),8)?b2.bP(d,J.pS(b2.gp(d),8)):d}else b="-"
+if(e!=null){b6=J.a2(e)
+d=b6.i(e,"scan_in")
+c=b6.i(e,"scan_out")
+if(d!=null&&J.ec(d)){b6=J.a2(d)
+b=J.uR(b6.gp(d),8)?b6.bP(d,J.pS(b6.gp(d),8)):d}else b="-"
 m=b
-if(c!=null&&J.ec(c)){b2=J.a2(c)
-a=J.uR(b2.gp(c),8)?b2.bP(c,J.pS(b2.gp(c),8)):c}else a="-"
+if(c!=null&&J.ec(c)){b6=J.a2(c)
+a=J.uR(b6.gp(c),8)?b6.bP(c,J.pS(b6.gp(c),8)):c}else a="-"
 k=J.bc(J.ar(o.fr,o.y))!==0&&J.ar(J.ar(o.fr,o.y),0)==="s"
 if(!J.e(m,"-")&&!J.e(m,""))try{j=A.fO("HH:mm:ss",null).jt(m,!1,!0)
 i=k?A.fO("HH:mm:ss",null).jt("07:30:00",!1,!0):A.fO("HH:mm:ss",null).jt("08:00:00",!1,!0)
 h=j.a>i.a
-l=h?"red":"green"}catch(b4){l="gray"}else l="orange"}else a="-"
+l=h?"red":"green"}catch(b8){l="gray"}else l="orange"}else a="-"
 s=11
 return A.F(o.mc(o.r),$async$nh)
-case 11:a0=b6
-if(a0!=null){b2=J.a2(a0)
-if(b2.i(a0,"PembelajaranHariIni")!=null){a1=b2.i(a0,"PembelajaranHariIni")
+case 11:a0=c0
+if(a0!=null){b6=J.a2(a0)
+if(b6.i(a0,"PembelajaranHariIni")!=null){a1=b6.i(a0,"PembelajaranHariIni")
 a2=a1==null?null:J.bV(a1)
 if(a2==null)a2="-"}else a2="-"
-if(b2.i(a0,"PengamatanTambahan")!=null){b2=b2.i(a0,"PengamatanTambahan")
-a3=b2==null?null:J.bV(b2)
+if(b6.i(a0,"PengamatanTambahan")!=null){b6=b6.i(a0,"PengamatanTambahan")
+a3=b6==null?null:J.bV(b6)
 if(a3==null)a3="-"}else a3="-"}else{a2="-"
 a3="-"}a4=o.ax
-b2=o.ch
-a5=b2.length!==0?b2[o.y]:"-"
+b6=o.ch
+a5=b6.length!==0?b6[o.y]:"-"
 a6=o.db
 a7=A.fO("EEEE, dd MMMM yyyy","id_ID").iX(o.r)
-a8=window.open("/card_export.html","_blank")
-a8=A.aHZ(a8)
-b2=t.N
-a9=A.aG(["nama",a4,"kelasStr",a5,"imageUrl",a6,"profileImageUrl",b1,"datang",m,"pulang",a,"pembelajaranHariIni",a2,"pengamatanHarian",a3,"datangColor",l,"formattedDate",a7],b2,b2)
-b0.a=!1
-b2=new A.aff(b0,a8,a9)
+a8=window.navigator.userAgent.toLowerCase()
+a9=B.d.v(a8,"iphone")||B.d.v(a8,"ipad")||B.d.v(a8,"ipod")
+b0=B.d.v(a8,"safari")&&!B.d.v(a8,"chrome")
+b1=a9&&b0?"_self":"_blank"
+b2=window.open("/card_export.html",b1)
+b2=A.aHZ(b2)
+b6=t.N
+b3=A.aG(["nama",a4,"kelasStr",a5,"imageUrl",a6,"profileImageUrl",b5,"datang",m,"pulang",a,"pembelajaranHariIni",a2,"pengamatanHarian",a3,"datangColor",l,"formattedDate",a7],b6,b6)
+b4.a=!1
+b6=new A.aff(b4,b2,b3)
 a1=window
 a1.toString
-B.lE.a6i(a1,"message",b2)
-A.wL(A.ce(0,0,0,0,0,1),new A.afe(b0,a8,a9,b2),t.P)
+B.lE.a6i(a1,"message",b6)
+A.wL(A.ce(0,0,0,0,0,1),new A.afe(b4,b2,b3,b6),t.P)
 return A.H(null,r)
 case 1:return A.G(p,r)}})
 return A.I($async$nh,r)},
