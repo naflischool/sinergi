@@ -111,6 +111,7 @@
       <div class="value" id="datang">Datang : -</div>
       <div class="value gray" id="pulang">Pulang : -</div>
       <div class="label">Pembelajaran Hari Ini:</div>
+      <div class="value" id="tanggalPembelajaran" style="color:#607d8b; font-size:12px; margin-bottom:0;">-</div>
       <div class="value" id="pembelajaran">-</div>
       <div class="label">Pengamatan Harian:</div>
       <div class="value" id="pengamatan">-</div>
@@ -165,6 +166,16 @@
       document.getElementById('kelas').textContent = 'Kelas: ' + (data.kelasStr || '-');
       document.getElementById('datang').textContent = 'Datang : ' + (data.datang || '-');
       document.getElementById('pulang').textContent = 'Pulang : ' + (data.pulang || '-');
+      // Set formatted date after 'Pembelajaran Hari Ini:'
+      // Try to get date from data, fallback to today
+      var dateStr = data.formattedDate;
+      if (!dateStr) {
+        // Try to infer from parent if not provided
+        var today = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+        dateStr = today.toLocaleDateString('id-ID', options);
+      }
+      document.getElementById('tanggalPembelajaran').textContent = dateStr;
       document.getElementById('pembelajaran').textContent = data.pembelajaranHariIni || '-';
       document.getElementById('pengamatan').textContent = data.pengamatanHarian || '-';
       // Color for datang
