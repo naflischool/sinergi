@@ -233,36 +233,91 @@
           console.log('Sent cardExportReady to opener');
         } catch (e) { console.error('Failed to send cardExportReady to opener', e); }
       }
-      // If no postMessage received after short delay, try URL params
-      setTimeout(function() {
-        if (!cardDataReceived) {
-          const cardData = getCardDataFromParams();
-          if (cardData) {
-            setCardData(cardData);
-          } else {
-            // Show error message and debug info
+      // Immediately load card data from URL params if present
+      const cardData = getCardDataFromParams();
+      if (cardData) {
+        setCardData(cardData);
+        cardDataReceived = true;
+      } else {
+        // If no postMessage received after short delay, show error
+        setTimeout(function() {
+          if (!cardDataReceived) {
             document.getElementById('loadingOverlay').innerHTML = 'Gagal memuat kartu.<br><span style="font-size:16px;color:#c00">Tidak ada data yang diterima.<br>Periksa koneksi, popup, dan parameter URL.</span><br><span style="font-size:12px;color:#888">URL: ' + window.location.href + '</span>';
             document.getElementById('loadingOverlay').style.display = 'flex';
             document.getElementById('card').style.opacity = 0;
             console.error('No card data received. URL:', window.location.href);
           }
-        }
-      }, 1000);
+        }, 1000);
+      }
     };
 
     // Download card as image
     function downloadCard() {
       hideDownloadBtn();
-      // Wait for images before capture
-      waitForImages(function() {
-        html2canvas(document.getElementById('card'), {backgroundColor: null, useCORS: true}).then(function(canvas) {
-          var link = document.createElement('a');
-          link.download = 'sinergi_card_' + Date.now() + '.png';
-          link.href = canvas.toDataURL();
-          link.click();
-          showDownloadBtn();
+      // Convert images to base64 before capture
+      function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+            callback(reader.result);
+          }
+          reader.readAsDataURL(xhr.response);
+        };
+        xhr.onerror = function() {
+          callback(url); // fallback to original URL if error
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+      }
+
+      var mainImg = document.getElementById('mainImage');
+      var profileImg = document.getElementById('profileImage');
+      var logoImg = document.querySelector('.card-container img[alt="Nafli School Logo"]');
+
+      var done = 0;
+      var total = 3;
+      var mainImgSrc = mainImg.src;
+      var profileImgSrc = profileImg.src;
+      var logoImgSrc = logoImg ? logoImg.src : null;
+
+      function afterAll() {
+        waitForImages(function() {
+          html2canvas(document.getElementById('card'), {backgroundColor: null, useCORS: true}).then(function(canvas) {
+            var link = document.createElement('a');
+            link.download = 'sinergi_card_' + Date.now() + '.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            // Restore original src
+            mainImg.src = mainImgSrc;
+            profileImg.src = profileImgSrc;
+            if (logoImg && logoImgSrc) logoImg.src = logoImgSrc;
+            showDownloadBtn();
+          });
         });
+      }
+
+      toDataURL(mainImgSrc, function(dataUrl) {
+        mainImg.src = dataUrl;
+        done++;
+        if (done === total) afterAll();
       });
+      toDataURL(profileImgSrc, function(dataUrl) {
+        profileImg.src = dataUrl;
+        done++;
+        if (done === total) afterAll();
+      });
+      if (logoImg && logoImgSrc) {
+        toDataURL(logoImgSrc, function(dataUrl) {
+          logoImg.src = dataUrl;
+          done++;
+          if (done === total) afterAll();
+        });
+      } else {
+        done++;
+        if (done === total) afterAll();
+      }
     }
     // Optionally: auto-fill from URL params
     function getParam(name) {
