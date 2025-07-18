@@ -194,14 +194,55 @@
     }
 
     // Listen for postMessage from Flutter
+    let cardDataReceived = false;
     window.addEventListener('message', function(event) {
       console.log('Received postMessage:', event);
-      // Accept from any origin for debugging, but you can restrict to your domain
-      // if (event.origin !== window.location.origin) return;
       if (event.data && typeof event.data === 'object') {
         setCardData(event.data);
+        cardDataReceived = true;
       }
     });
+
+    // If no postMessage received, try to get card data from URL params (for iOS/iPadOS Safari)
+    function getCardDataFromParams() {
+      const url = new URL(window.location.href);
+      const params = url.searchParams;
+      if (params.has('nama')) {
+        return {
+          nama: params.get('nama'),
+          kelasStr: params.get('kelasStr'),
+          imageUrl: params.get('imageUrl'),
+          profileImageUrl: params.get('profileImageUrl'),
+          datang: params.get('datang'),
+          pulang: params.get('pulang'),
+          pembelajaranHariIni: params.get('pembelajaranHariIni'),
+          pengamatanHarian: params.get('pengamatanHarian'),
+          datangColor: params.get('datangColor'),
+          formattedDate: params.get('formattedDate'),
+        };
+      }
+      return null;
+    }
+
+    window.onload = function() {
+      console.log('card_export.html loaded');
+      // Handshake: notify opener that card_export.html is ready
+      if (window.opener && window.opener !== window) {
+        try {
+          window.opener.postMessage({type: 'cardExportReady'}, window.location.origin);
+          console.log('Sent cardExportReady to opener');
+        } catch (e) { console.error('Failed to send cardExportReady to opener', e); }
+      }
+      // If no postMessage received after short delay, try URL params
+      setTimeout(function() {
+        if (!cardDataReceived) {
+          const cardData = getCardDataFromParams();
+          if (cardData) {
+            setCardData(cardData);
+          }
+        }
+      }, 300);
+    };
 
     // Download card as image
     function downloadCard() {
