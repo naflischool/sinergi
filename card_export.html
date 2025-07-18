@@ -239,11 +239,12 @@
     // Try to get data from opener if available (for iOS Safari)
     window.onload = function() {
       console.log('card_export.html loaded');
+      // Handshake: notify opener that card_export.html is ready
       if (window.opener && window.opener !== window) {
         try {
-          window.opener.postMessage('requestCardData', '*');
-          console.log('Requested card data from opener');
-        } catch (e) { console.error('Failed to request card data from opener', e); }
+          window.opener.postMessage({type: 'cardExportReady'}, window.location.origin);
+          console.log('Sent cardExportReady to opener');
+        } catch (e) { console.error('Failed to send cardExportReady to opener', e); }
       }
     };
   </script>
