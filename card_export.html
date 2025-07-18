@@ -239,9 +239,15 @@
           const cardData = getCardDataFromParams();
           if (cardData) {
             setCardData(cardData);
+          } else {
+            // Show error message and debug info
+            document.getElementById('loadingOverlay').innerHTML = 'Gagal memuat kartu.<br><span style="font-size:16px;color:#c00">Tidak ada data yang diterima.<br>Periksa koneksi, popup, dan parameter URL.</span><br><span style="font-size:12px;color:#888">URL: ' + window.location.href + '</span>';
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            document.getElementById('card').style.opacity = 0;
+            console.error('No card data received. URL:', window.location.href);
           }
         }
-      }, 300);
+      }, 1000);
     };
 
     // Download card as image
