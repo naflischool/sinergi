@@ -118,12 +118,37 @@
     </div>
     <div style="text-align:center; margin-top:18px; font-size:13px; color:#888; display:flex; align-items:center; justify-content:center; gap:6px;">
       <span>Sinergi by Nafli School</span>
-      <img src="https://i.ibb.co/XZ7pgC6W/logo.png" alt="Nafli School Logo" style="height:22px; vertical-align:middle; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+      <img id="logo1" src="https://i.ibb.co/XZ7pgC6W/logo.png" alt="Nafli School Logo" style="height:22px; vertical-align:middle; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+      <img id="logo2" src="https://nafli.or.id/assets/images/image03.png" alt="Nafli School Logo 2" style="height:22px; vertical-align:middle; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.08); display:none;">
     </div>
     <button class="download-btn hide-for-capture" id="downloadBtn" onclick="downloadCard()">Download Gambar</button>
   </div>
   </div>
   <script>
+    // Logo fallback logic
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo1 = document.getElementById('logo1');
+      var logo2 = document.getElementById('logo2');
+      logo1.onerror = function() {
+        logo1.style.display = 'none';
+        logo2.style.display = 'inline-block';
+      };
+      logo2.onerror = function() {
+        logo2.style.display = 'none';
+        logo1.style.display = 'inline-block';
+      };
+      // If logo1 loads, keep logo2 hidden
+      logo1.onload = function() {
+        logo2.style.display = 'none';
+        logo1.style.display = 'inline-block';
+      };
+      // If logo2 loads and logo1 fails, show logo2
+      logo2.onload = function() {
+        if (logo1.style.display === 'none') {
+          logo2.style.display = 'inline-block';
+        }
+      };
+    });
     // Hide download button before capture
     function hideDownloadBtn() {
       document.getElementById('downloadBtn').style.display = 'none';
@@ -209,10 +234,21 @@
       // Wait for images before capture
       waitForImages(function() {
         html2canvas(document.getElementById('card'), {backgroundColor: null, useCORS: true}).then(function(canvas) {
-          var link = document.createElement('a');
-          link.download = 'sinergi_card_' + Date.now() + '.png';
-          link.href = canvas.toDataURL();
-          link.click();
+          var dataUrl = canvas.toDataURL();
+          var isIOS = /ipad|iphone|ipod|macintosh/.test(navigator.userAgent.toLowerCase());
+          var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+          if (isIOS && isSafari) {
+            // iOS/iPadOS Safari workaround: open image in new tab for manual save
+            var win = window.open();
+            win.document.write('<html><head><title>Save Image</title></head><body style="margin:0;padding:0;background:#fff;"><img src="' + dataUrl + '" style="width:100%;max-width:600px;display:block;margin:auto;"/></body></html>');
+          } else {
+            var link = document.createElement('a');
+            link.download = 'sinergi_card_' + Date.now() + '.png';
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
           showDownloadBtn();
         });
       });
