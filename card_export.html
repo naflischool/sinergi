@@ -14,19 +14,21 @@
       padding: 0;
     }
     .card-container {
-      max-width: 370px;
+      width: 370px;
+      height: 570px;
       margin: 40px auto;
       background: #fff;
       border-radius: 18px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.10);
       padding: 18px;
+      overflow: hidden;
+      position: relative;
     }
     .main-image {
       width: 100%;
       height: 200px;
       object-fit: cover;
       border-radius: 14px;
-      position: relative;
       display: block;
     }
     .profile-avatar {
@@ -255,10 +257,25 @@
 function downloadCard() {
   hideDownloadBtn();
   waitForImages(function() {
-    html2canvas(document.getElementById('card'), {backgroundColor: null, useCORS: true}).then(function(canvas) {
+    var card = document.getElementById('card');
+    html2canvas(card, {
+      backgroundColor: null,
+      useCORS: true,
+      width: card.offsetWidth,
+      height: card.offsetHeight,
+      scale: window.devicePixelRatio || 2
+    }).then(function(canvas) {
+      // Crop canvas to card aspect ratio
+      var aspectW = card.offsetWidth;
+      var aspectH = card.offsetHeight;
+      var cropCanvas = document.createElement('canvas');
+      cropCanvas.width = aspectW;
+      cropCanvas.height = aspectH;
+      var ctx = cropCanvas.getContext('2d');
+      ctx.drawImage(canvas, 0, 0, aspectW, aspectH, 0, 0, aspectW, aspectH);
       var link = document.createElement('a');
       link.download = 'sinergi_card_' + Date.now() + '.png';
-      link.href = canvas.toDataURL();
+      link.href = cropCanvas.toDataURL();
       link.click();
       showDownloadBtn();
     });
