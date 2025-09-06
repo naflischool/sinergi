@@ -43855,10 +43855,10 @@ b1=B.d.v(a9,"safari")&&!B.d.v(a9,"chrome")
 b2=b0&&b1?"_self":"_blank"
 b8=t.N
 b3=A.aG(["nama",a5,"kelasStr",a6,"imageUrl",a7,"profileImageUrl",b7,"datang",l,"pulang",a0,"pembelajaranHariIni",a3,"pengamatanHarian",a4,"datangColor",k,"formattedDate",a8],b8,b8)
-if(b2==="_self"){b4=b3.ge5(b3).d2(0,new A.afA(),b8).aD(0,"&")
-window.location.href="/card_export.html?"+b4
+b4=b3.ge5(b3).d2(0,new A.afA(),b8).aD(0,"&")
+if(b2==="_self"){window.location.href="/card_export.html?"+b4
 s=1
-break}b5=window.open("/card_export.html",b2)
+break}b5=window.open("/card_export.html?"+b4,b2)
 b5=A.aIx(b5)
 b6.a=!1
 b8=new A.afC(b6,b5,b3)
