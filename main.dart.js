@@ -41459,8 +41459,8 @@ $2$isReplaced(a,b){return this.E(this,A.O("$2$isReplaced","$2$isReplaced",0,[a,b
 $6$alignment$alignmentPolicy$curve$duration$targetRenderObject(a,b,c,d,e,f){return this.E(this,A.O("$6$alignment$alignmentPolicy$curve$duration$targetRenderObject","$6$alignment$alignmentPolicy$curve$duration$targetRenderObject",0,[a,b,c,d,e,f],["alignment","alignmentPolicy","curve","duration","targetRenderObject"],0))},
 $2$alignmentPolicy(a,b){return this.E(this,A.O("$2$alignmentPolicy","$2$alignmentPolicy",0,[a,b],["alignmentPolicy"],0))},
 $2$ignoreCurrentFocus(a,b){return this.E(this,A.O("$2$ignoreCurrentFocus","$2$ignoreCurrentFocus",0,[a,b],["ignoreCurrentFocus"],0))},
-$3$color$fontSize$fontWeight(a,b,c){return this.E(this,A.O("$3$color$fontSize$fontWeight","$3$color$fontSize$fontWeight",0,[a,b,c],["color","fontSize","fontWeight"],0))},
-$3$color$fontSize$fontStyle(a,b,c){return this.E(this,A.O("$3$color$fontSize$fontStyle","$3$color$fontSize$fontStyle",0,[a,b,c],["color","fontSize","fontStyle"],0))},
+$4$color$decoration$fontSize$fontWeight(a,b,c,d){return this.E(this,A.O("$4$color$decoration$fontSize$fontWeight","$4$color$decoration$fontSize$fontWeight",0,[a,b,c,d],["color","decoration","fontSize","fontWeight"],0))},
+$4$color$decoration$fontSize$fontStyle(a,b,c,d){return this.E(this,A.O("$4$color$decoration$fontSize$fontStyle","$4$color$decoration$fontSize$fontStyle",0,[a,b,c,d],["color","decoration","fontSize","fontStyle"],0))},
 $3$bodyColor$decorationColor$displayColor(a,b,c){return this.E(this,A.O("$3$bodyColor$decorationColor$displayColor","$3$bodyColor$decorationColor$displayColor",0,[a,b,c],["bodyColor","decorationColor","displayColor"],0))},
 $2$color$fontSize(a,b){return this.E(this,A.O("$2$color$fontSize","$2$color$fontSize",0,[a,b],["color","fontSize"],0))},
 $3$textDirection(a,b,c){return this.E(this,A.O("$3$textDirection","$3$textDirection",0,[a,b,c],["textDirection"],0))},
@@ -44690,14 +44690,14 @@ i===$&&A.b()
 s=A.aoN("assets/logo_white.PNG",120,120)
 r=k.f
 r===$&&A.b()
-q=A.b9("Sinergi",j,j,j,A.ar4().$3$color$fontSize$fontWeight(B.k,32,B.a8),j,j)
+q=A.b9("Sinergi",j,j,j,A.ar4().$4$color$decoration$fontSize$fontWeight(B.k,B.e,32,B.a8),j,j)
 p=A.c3(j,8,j)
-o=A.b9("by Nafli School",j,j,j,A.ar4().$3$color$fontSize$fontWeight(B.F,16,B.n),j,j)
+o=A.b9("by Nafli School",j,j,j,A.ar4().$4$color$decoration$fontSize$fontWeight(B.F,B.e,16,B.n),j,j)
 n=A.c3(j,172,j)
 m=k.d
 m===$&&A.b()
 l=t.p
-return A.bq(j,A.qg(A.dN(A.a([new A.ff(i,!1,s,j),B.a2w,new A.ff(r,!1,A.dN(A.a([q,p,o,n,A.k9(m,new A.aka(k),A.b9('"tumbuh dan maju bersama sinergi"',j,j,j,A.ar4().$3$color$fontSize$fontStyle(A.aa(255,255,255,255),12,B.aZ),B.bL,j))],l),B.as,B.ah,B.U),j)],l),B.as,B.c7,B.U),j,j),B.m,j,j,B.Gk,j,j,j,j,j,j,j)}}
+return A.bq(j,A.qg(A.dN(A.a([new A.ff(i,!1,s,j),B.a2w,new A.ff(r,!1,A.dN(A.a([q,p,o,n,A.k9(m,new A.aka(k),A.b9('"tumbuh dan maju bersama sinergi"',j,j,j,A.ar4().$4$color$decoration$fontSize$fontStyle(A.aa(255,255,255,255),B.e,12,B.aZ),B.bL,j))],l),B.as,B.ah,B.U),j)],l),B.as,B.c7,B.U),j,j),B.m,j,j,B.Gk,j,j,j,j,j,j,j)}}
 A.akb.prototype={
 $0(){this.a.a.c.$0()},
 $S:38}
@@ -80574,7 +80574,7 @@ q(A,"ar5",1,null,["$2$wrapWidth","$1"],["ayt",function(a){return A.ayt(a,null)}]
 m(A,"aNM","axi",0)
 s(A,"pV","asp",54)
 s(A,"v4","aD0",54)
-q(A,"ar4",0,function(){return{background:null,backgroundColor:null,color:null,decoration:null,decorationColor:null,decorationStyle:null,decorationThickness:null,fontFeatures:null,fontSize:null,fontStyle:null,fontWeight:null,foreground:null,height:null,letterSpacing:null,locale:null,shadows:null,textBaseline:null,textStyle:null,wordSpacing:null}},["$19$background$backgroundColor$color$decoration$decorationColor$decorationStyle$decorationThickness$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$letterSpacing$locale$shadows$textBaseline$textStyle$wordSpacing","$0","$2$color$fontWeight","$1$color","$18$background$backgroundColor$color$decoration$decorationColor$decorationStyle$decorationThickness$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$letterSpacing$locale$shadows$textBaseline$wordSpacing","$3$color$fontSize$fontWeight","$3$color$fontSize$fontStyle","$2$color$fontSize","$1$height"],["d8",function(){return A.d8(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)},function(a,b){return A.d8(null,null,a,null,null,null,null,null,null,null,b,null,null,null,null,null,null,null,null)},function(a){return A.d8(null,null,a,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)},function(a,b,c,d,e,f,g,h,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9){return A.d8(a,b,c,d,e,f,g,h,a0,a1,a2,a3,a4,a5,a6,a7,a8,null,a9)},function(a,b,c){return A.d8(null,null,a,null,null,null,null,null,b,null,c,null,null,null,null,null,null,null,null)},function(a,b,c){return A.d8(null,null,a,null,null,null,null,null,b,c,null,null,null,null,null,null,null,null,null)},function(a,b){return A.d8(null,null,a,null,null,null,null,null,b,null,null,null,null,null,null,null,null,null,null)},function(a){return A.d8(null,null,null,null,null,null,null,null,null,null,null,null,a,null,null,null,null,null,null)}],552,0)
+q(A,"ar4",0,function(){return{background:null,backgroundColor:null,color:null,decoration:null,decorationColor:null,decorationStyle:null,decorationThickness:null,fontFeatures:null,fontSize:null,fontStyle:null,fontWeight:null,foreground:null,height:null,letterSpacing:null,locale:null,shadows:null,textBaseline:null,textStyle:null,wordSpacing:null}},["$19$background$backgroundColor$color$decoration$decorationColor$decorationStyle$decorationThickness$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$letterSpacing$locale$shadows$textBaseline$textStyle$wordSpacing","$0","$2$color$fontWeight","$1$color","$18$background$backgroundColor$color$decoration$decorationColor$decorationStyle$decorationThickness$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$letterSpacing$locale$shadows$textBaseline$wordSpacing","$4$color$decoration$fontSize$fontWeight","$4$color$decoration$fontSize$fontStyle","$2$color$fontSize","$1$height"],["d8",function(){return A.d8(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)},function(a,b){return A.d8(null,null,a,null,null,null,null,null,null,null,b,null,null,null,null,null,null,null,null)},function(a){return A.d8(null,null,a,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)},function(a,b,c,d,e,f,g,h,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9){return A.d8(a,b,c,d,e,f,g,h,a0,a1,a2,a3,a4,a5,a6,a7,a8,null,a9)},function(a,b,c,d){return A.d8(null,null,a,b,null,null,null,null,c,null,d,null,null,null,null,null,null,null,null)},function(a,b,c,d){return A.d8(null,null,a,b,null,null,null,null,c,d,null,null,null,null,null,null,null,null,null)},function(a,b){return A.d8(null,null,a,null,null,null,null,null,b,null,null,null,null,null,null,null,null,null,null)},function(a){return A.d8(null,null,null,null,null,null,null,null,null,null,null,null,a,null,null,null,null,null,null)}],552,0)
 q(A,"aNH",0,null,["$1","$0"],["auI",function(){return A.auI(null)}],401,0)
 r(A,"aOm","aN2",369)})();(function inheritance(){var s=hunkHelpers.mixin,r=hunkHelpers.mixinHard,q=hunkHelpers.inheritMany,p=hunkHelpers.inherit
 q(null,[A.z,A.w6])
